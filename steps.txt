@@ -1,0 +1,27 @@
+1. Create a local fresh WP
+2. define( 'WP_ENVIRONMENT_TYPE', 'local' ); add this in wp-config.php
+3. https://github.com/wordpress/mcp-adapter ~ download a zip and install the plugin
+4. Go to plugin folder & run "composer install"
+5. Activate the Plugin
+6. Edit profile -> Application Password and set a password. copy the password.
+7. Run this command to encrypt: echo -n "<username>:<password>" | base64
+8. you will get encrypted password. copy and run below command:
+claude mcp add wp-mcp \
+  --transport http \
+  --header "Authorization: Basic <encrypted-password>" \
+  --scope user \             
+  "http://localhost:10078/wp-json/mcp/mcp-adapter-default-server"
+
+9. check mcp connection : "claude mcp list"
+10. add expose-abilities.php file  in wp-content/mu-plugins/
+11. Run: "Discover abilities"
+12. simple prompt to check How it's work: "who is currently logged in?"
+13. Integrate Custom abilities
+14. add post-abilities.php into wp-content/mu-plugins/
+15. simple post creation promp: "Create a new draft post titled "Hello from Claude via MCP" with content "This post was created by Claude using MCP."
+
+
+
+
+#NOTE:
+To remove: claude mcp remove <wp-mcp-name> 
