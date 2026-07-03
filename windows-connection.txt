@@ -1,0 +1,31 @@
+## Windows — Claude Desktop (GUI)
+
+**Step 1 — Find the config file:**
+```
+C:\Users\YourName\AppData\Roaming\Claude\claude_desktop_config.json
+```
+
+Open it in Notepad or VS Code.
+
+**Step 2 — Add your MCP server:**
+```json
+{
+  "mcpServers": {
+    "wp-workshop": {
+      "type": "http",
+      "url": "http://localhost:PORT/wp-json/mcp/mcp-adapter-default-server",
+      "headers": {
+        "Authorization": "Basic YOUR_BASE64_HERE"
+      }
+    }
+  }
+}
+```
+
+**Step 3 — Generate Base64 on Windows (PowerShell):**
+```powershell
+[Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes("admin:Xxxx Xxxx Xxxx Xxxx"))
+```
+
+**Step 4 — Restart Claude Desktop** completely (quit from system tray, reopen).
+
